@@ -1,22 +1,22 @@
 // Implements circular linked list with head pointer.
 public class LinkedList<T> {
-  Node<T> head; // Pointer to head element
-  Node<T> lastNode; // Pointer to last element in LinkedList
+  Node<T> head; // Pointer to first element
+  Node<T> lastNode; // Pointer to last element
 
   // Add value to end of linked list
   void addToEnd(T value) {
     // Create node with value
     Node<T> node = new Node<>(value);
 
-    // If there are no elements, make the new node the head node,
-    // point the last node to the one and only node in the list.
+    // If there are no elements, make the new node the first node,
+    // point the lastNode pointer to the one and only node in the list.
     if (head == null) {
       head = node;
       node.nextNode = head;
     } else {
       // Otherwise, make the last node point to the new node,
       // hence making the new node the last node.
-      // Have the new node's next node point to the first node.
+      // Have the new node's nextNode pointer point to the first node.
       lastNode.nextNode = node;
       node.nextNode = head;
     }
@@ -27,7 +27,7 @@ public class LinkedList<T> {
   // Remove node from linked list
   void remove(Node<T> node) {
     if (node == head) {
-      // If we are removing the head, alter the head pointer to point to the next element
+      // If we are removing the first node, alter the head pointer to point to the next element
       // and modify the last node to point to the new first node.
       head = head.nextNode;
       lastNode.nextNode = head;
