@@ -9,32 +9,32 @@ public class LinkedList<T> {
     Node<T> node = new Node<>(value);
 
     // If there are no elements, make the new node the first node,
-    // point the lastNode pointer to the one and only node in the list.
+    // assign the lastNode pointer to the one and only node in the list.
     if (head == null) {
       head = node;
       node.nextNode = head;
     } else {
-      // Otherwise, make the last node point to the new node,
+      // Otherwise, make the last node's nextNode pointer assigned to the new node,
       // hence making the new node the last node.
-      // Have the new node's nextNode pointer point to the first node.
+      // Have the new node's nextNode pointer assigned to the first node.
       lastNode.nextNode = node;
       node.nextNode = head;
     }
-    // Have lastNode point to the new last node
+    // Have lastNode assigned to new last node
     lastNode = node;
   }
 
   // Remove node from linked list
   void remove(Node<T> node) {
     if (node == head) {
-      // If we are removing the first node, alter the head pointer to point to the next element
-      // and modify the last node to point to the new first node.
+      // If we are removing the first node, assign the head pointer to the next element
+      // and assign the last node's nextNode pointer to the new first node.
       head = head.nextNode;
       lastNode.nextNode = head;
     } else {
-      // Otherwise, find the node that points to the node we are removing
-      // and modify its pointer to point to the node after the node we are removing.
-      var ptr = head;
+      // Otherwise, find the node before the node we are removing
+      // and assign its pointer to the node after the node we are removing.
+      Node<T> ptr = head;
       while (ptr.nextNode != node) {
         ptr = ptr.nextNode;
       }
